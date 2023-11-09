@@ -1,0 +1,88 @@
+<div class="container">
+  <h1>Name Generator API Call</h1>
+  <p>Scroll down for instructions.</p>
+  
+    <div class="form-container card card-body bg-light">
+    <h2>Fake Name Generator</h2>
+    <div class="alert alert-primary d-none" id="result">
+      Put your generated fake name here.
+    </div>
+
+    <form id="name-form">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" id="first-name" value="Michael" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" class="form-control" id="last-name" value="Scott" required>
+      </div>
+  <!--     <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender-male" value="m">
+        <label class="form-check-label" for="gender-male">
+          Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender-female" value="f">
+        <label class="form-check-label" for="gender-female">
+          Female
+        </label>
+      </div> -->
+      <button type="submit" class="btn btn-primary mb-2">Go</button>
+    </form>
+  </div>
+  <!-- End of .form-container div -->
+  
+  <h2>Instructions</h2>
+  <aside>No CSS changes are required for this lab.</aside>
+  <p>In this lab, you'll use form data to make an API call, and then display the response in your webpage.</p>
+  <p>You'll make a GET AJAX request, putting your form data into the URL that you'll send. The API will return a JSON object containing the generated name. <strong>When you are finished, submit your forked Codepen URL to Canvas</strong>.</p>
+  <h2>Instructions</h2>
+  <ol>
+    <li>Get an API key <a href="https://cse204.work/api-key" target="_blank">here</a>: <a href="https://cse204.work/api-key" target="_blank">https://cse204.work/api-key</a></li>
+    <li>Flesh out the Javascript functions.</li>
+    <li>Test the form to make sure it works.</li>
+  </ol>
+  
+  <hr>
+  <h2>Detailed Instructions</h2>
+  <h3>1. Get Your API Key</h3>
+  <p>Your API key will serve to authenticate you instead of using a username and password. You must use your Washingon University school email address.</p>
+  <h3>2. Javascript Functions</h3>
+  <p>The functions have already been stubbed out for you. Let's walk through them one by one.</p>
+  <h4>The <code>displayFakeName(name)</code> Function</h4>
+  <p>This function will simply take a string and display it on the page.</p>
+  <p>You can test out by just calling displayFakeName("Test Name"). Get your text to display in the <code>#result</code> div by using <code>getElementById()</code> and then set it's <code>innerText</code> property.</p>
+  <h4>The <code>buildApiUrl()</code> Function</h4>
+  <p>Your finished URL should look something like this: <code> http://cse204.work/name/superhero/clark/kent</code> </p>
+  <p>The function already has things spelled out for you. If you're having a hard time, try adding <code>value</code> attributes to the input elements and fill in test data. Then you can call the function directly in your code to test it.</p>
+  <aside>The API is only built for English alphabet characters, and may return errors for unsupported characters.</aside>
+  <h4>The <code>getFakeNameFromApi()</code> Function</h4>
+  <p>You will use your <em>API key</em> to authenticate with the API. You'll pass it in the HTTP headers like this: <code>xhttp.setRequestHeader("x-api-key", "abc123");</code>
+  </p>
+  <pre class="well" style="border: solid 1px gray;">
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var nameObject = JSON.parse(this.responseText);
+        console.log(nameObject);
+        displayFakeName(nameObject.name);
+    }
+};
+
+xhttp.open("GET", "https://cse204.work/name/superhero/clark/kent", true);
+xhttp.setRequestHeader("x-api-key","abc123-this-is-your-api-key");
+xhttp.send();
+</pre>
+  <p>The API will return a JSON object that looks something like this: <code>{ name: "Firstname Lastname" }</code></p>
+  <p>You'll need to grab the <code>name</code> property from the object.</p>
+
+  <h3>3. Test the form to make sure it works.</h3>
+  
+  <h3>Optional/Advanced</h3>
+  <p>To use the Harry Potter name generator API, build a URL that looks like this: <code>https://cse204.work/name/harrypotter/firstname/lastname/gender</code> where <code>gender</code> is either <code>m</code> or <code>f</code>.<p>
+  <p>Here's an example URL for the Harry Potter API: <code> http://cse204.work/name/harrypotter/Daniel/Radcliffe/m</code></p>
+  <p>The form already has a drop-down menu for gender, but it's commented out. You'll have to uncomment it and then modify your <code>buildApiUrl()</code> function.</p>
+</div>
