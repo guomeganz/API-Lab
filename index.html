@@ -1,4 +1,64 @@
-<div class="container">
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+  <title>CodePen - Name Generator API</title>
+
+    <link rel="canonical" href="https://codepen.io/elbrittono/pen/oNXBRNo">
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+  
+<style>
+aside {
+  float: right;
+  width: 40%;
+  font-size: 1.3em;
+  padding: 1em 1.5em;
+  margin: 0.5em;
+  text-align: center;
+  font-style: italic;
+  background: #efefef;
+  border-radius: 0.5em;
+}
+
+h2, h3, h4 {
+  margin-top: 1em;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
   <h1>Name Generator API Call</h1>
   <p>Scroll down for instructions.</p>
   
@@ -86,3 +146,53 @@ xhttp.send();
   <p>Here's an example URL for the Harry Potter API: <code> http://cse204.work/name/harrypotter/Daniel/Radcliffe/m</code></p>
   <p>The form already has a drop-down menu for gender, but it's commented out. You'll have to uncomment it and then modify your <code>buildApiUrl()</code> function.</p>
 </div>
+  
+      <script id="rendered-js" >
+function getFakeNameFromApi() {
+  event.preventDefault(); // This prevents the form from reloading the page!
+  var url = buildApiUrl(); // Call the buildApiUrl() function to get the URL.
+
+  // @TODO: Fill in this function to do the following:
+
+  // 2. Make an AJAX call to the API and save the generated name in a variable.
+
+  // 3. Call the displayFakeName() function from within your onreadystatechange function, and pass in the generated name.
+
+  console.log("If you see this in the console, the getFakeNameFromApi() function was called.");
+}
+
+function buildApiUrl() {
+  var baseUrl = 'https://cse204.work/name/superhero/';
+
+  // @TODO: Modify this function so that it gets the first name and last name from the form 
+  // using the document.getElementById() function and the .value property.
+
+  var firstName = ''; // Get this via DOM from the first-name input
+  var lastName = ''; // Get this via DOM from the last-name input
+
+  // Here we build the URL. You don't have to modify the rest of this function.
+  var finishedUrl = baseUrl + firstName + '/' + lastName;
+
+  // Return the finished URL:
+  console.log(finishedUrl); // Sanity check! Did your URL come out the way you expected it to?
+  return finishedUrl;
+}
+
+function displayFakeName(name) {
+  // @TODO: Modify this function so that it displays the name variable in the #result div.
+  // Use DOM methods to take the `name` variable and set the innerHTML property of #result.
+
+  // Bootstrap provides a "d-none" class (it stands for "display: none") that's used to hide a div.
+  // Make sure you remove the Bootstrap "d-none" helper class so that the div is displayed. Try using .classList.remove() on your DOM element.
+}
+
+// Below we use addEventListener() to bind the getFakeNameFromApi() function to the submit event of the #name-form form.
+const formElement = document.getElementById("name-form");
+formElement.addEventListener("submit", getFakeNameFromApi, false);
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
