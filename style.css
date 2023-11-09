@@ -1,0 +1,19 @@
+aside {
+  float: right;
+  width: 40%;
+  font-size: 1.3em;
+  padding: 1em 1.5em;
+  margin: 0.5em;
+  text-align: center;
+  font-style: italic;
+  background: #efefef;
+  border-radius: 0.5em;
+}
+
+h2, h3, h4 {
+  margin-top: 1em;
+}
+
+.card h2 {
+  margin-top: 0;
+}
